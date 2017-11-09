@@ -7,3 +7,4 @@ profile_outputs
 *.pyc
 *.dat
 *.png
+*.out
