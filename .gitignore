@@ -1,0 +1,9 @@
+glumpy/*
+__pycache__/*
+from_iter_out
+from_zeros_out
+profile_output
+profile_outputs
+*.pyc
+*.dat
+*.png

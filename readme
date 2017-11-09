@@ -1,0 +1,7 @@
+Software Requirements:
+Python 3.6
+Numpy
+Matplotlib
+
+To profile:
+python -m cprofilev scriptfile
