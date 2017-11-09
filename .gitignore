@@ -1,4 +1,4 @@
-glumpy/*
+glumpy/
 __pycache__/*
 from_iter_out
 from_zeros_out
