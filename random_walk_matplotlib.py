@@ -10,7 +10,6 @@ from random_args_parser import RandomArgsParser
     #import cProfile
 
 fig = plt.figure()
-ax = fig.add_subplot(111, projection="3d")
 
 def color(rwalk):
     colorsMap = "jet"
@@ -20,27 +19,31 @@ def color(rwalk):
     scalarMap = cm.ScalarMappable(norm=cNorm, cmap=cmx)
     return scalarMap, cs
 
-def print_plot(ax, rwalk):
-    ax.set_xlabel('X label')
-    ax.set_ylabel('Y label')
+def print_plot(rwalk):
     if rwalk.dim_size == 2:
+        ax = fig.add_subplot(111)
         print("2D")
         scalarMap, cs = color(rwalk)
         ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], cmap=scalarMap.to_rgba(cs), marker='o', s=1)
         scalarMap.set_array(cs)
     elif rwalk.dim_size == 3:
         print("3D")
+        ax = fig.add_subplot(111, projection="3d")
         scalarMap, cs = color(rwalk)
         ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], rwalk.dim_array[2], c=scalarMap.to_rgba(cs), marker='o', s=1)
         scalarMap.set_array(cs)
         ax.set_zlabel('Z label')
+    ax.set_xlabel('X label')
+    ax.set_ylabel('Y label')
+
 
 def main():
     rwalk = RandomWalk()
     rwalk.array_size, rwalk.dim_size = RandomArgsParser.read_args(RandomArgsParser, sys.argv, rwalk.array_size, rwalk.dim_size)
+    print(rwalk.dim_size)
     rwalk.gen_dwalk()
     if rwalk.dim_size >= 2:
-        print_plot(ax, rwalk)
+        print_plot(rwalk)
         plt.show()
 
 if __name__ == "__main__":

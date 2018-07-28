@@ -1,6 +1,7 @@
 from random import getrandbits
 from numpy import fromiter
 from numpy import arctan2
+import numpy as np
 
 class RandomWalk():
     def __init__(self):
@@ -25,6 +26,6 @@ class RandomWalk():
 
     #Generate the values for an n-dimensional 
     def gen_dwalk(self):
-        self.dim_array = [self.one_dwalk_gen() for i in range(0, self.dim_size)]
+        self.dim_array = np.array([self.one_dwalk_gen() for i in range(0, self.dim_size)])
         if self.dim_size >= 2:
-            self.color = arctan2(self.dim_array[0], self.dim_array[1])
+            self.color = np.array(arctan2(self.dim_array[0], self.dim_array[1]))

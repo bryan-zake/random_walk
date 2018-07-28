@@ -21,4 +21,6 @@ class RandomArgsParser():
                 temp = self.parse_args(argv, '-d')
                 if temp > 0:
                     dim_size = temp
+        else:
+            print("Usage: -d=dimensions (2 or 3), -a=array size")
         return array_size, dim_size 
