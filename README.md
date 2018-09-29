@@ -6,5 +6,5 @@ A simple set of scripts and libraries for performing random walks in Python 3 wi
 python3 main.py -h
 
 ## Samples
-![Sample1][sample.png]
+![Sample1][https://github.com/bryan-zake/random_walk/blob/master/sample.png]
 
