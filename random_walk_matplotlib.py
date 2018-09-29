@@ -6,9 +6,6 @@ from matplotlib import cm
 from random_walk import RandomWalk
 from random_args_parser import RandomArgsParser
 
-#if '-p' in sys.argv:
-    #import cProfile
-
 fig = plt.figure()
 
 def color(rwalk):

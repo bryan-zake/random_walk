@@ -1,58 +1,48 @@
-"""
-================
-The Bayes update
-================
-
-This animation displays the posterior estimate updates as it is refitted when
-new data arrives.
-The vertical line represents the theoretical value to which the plotted
-distribution should converge.
-"""
-
-# update a distribution based on new data.
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.stats as ss
+from random_walk import RandomWalk
+from random_args_parser import RandomArgsParser
 from matplotlib.animation import FuncAnimation
 
 
-class UpdateDist(object):
-    def __init__(self, ax, prob=0.5):
-        self.success = 0
-        self.prob = prob
-        self.line, = ax.plot([], [], 'k-')
-        self.x = np.linspace(0, 1, 200)
-        self.ax = ax
+#if '-p' in sys.argv:
+    #import cProfile
 
-        # Set up plot parameters
-        self.ax.set_xlim(0, 1)
-        self.ax.set_ylim(0, 15)
-        self.ax.grid(True)
-
-        # This vertical line represents the theoretical value, to
-        # which the plotted distribution should converge.
-        self.ax.axvline(prob, linestyle='--', color='black')
-
-    def init(self):
-        self.success = 0
-        self.line.set_data([], [])
-        return self.line,
-
-    def __call__(self, i):
-        # This way the plot can continuously run and we just keep
-        # watching new realizations of the process
-        if i == 0:
-            return self.init()
-
-        # Choose success based on exceed a threshold with a uniform pick
-        if np.random.rand(1,) < self.prob:
-            self.success += 1
-        y = ss.beta.pdf(self.x, self.success + 1, (i - self.success) + 1)
-        self.line.set_data(self.x, y)
-        return self.line,
-
+anim_count = 0
 fig, ax = plt.subplots()
-ud = UpdateDist(ax, prob=0.7)
-anim = FuncAnimation(fig, ud, frames=np.arange(100), init_func=ud.init,
-                     interval=100, blit=True)
-plt.show()
+xdata, ydata = [], []
+ln, = plt.plot([], [], 'r', animated=True)
+
+rwalk = RandomWalk()
+rwalk.array_size = 10000;
+rwalk.dim_size = 2
+rwalk.gen_dwalk()
+
+def init():
+    global rwalk
+    ax.set_xlim(np.nanmin(rwalk.dim_array[0]), np.nanmax(rwalk.dim_array[0]))
+    ax.set_ylim(np.nanmin(rwalk.dim_array[1]), np.nanmax(rwalk.dim_array[1]))
+    return ln,
+
+def update(frame):
+    global anim_count
+    xdata.append(rwalk.dim_array[0][anim_count])
+    ydata.append(rwalk.dim_array[1][anim_count])
+    ln.set_data(xdata, ydata)
+    anim_count += 1
+    return ln,
+
+def main():
+    if rwalk.dim_size >= 2:
+        ani = FuncAnimation(fig, \
+                update, \
+                frames=10000,\
+                init_func=init, \
+                blit=True,
+                interval=5,
+                save_count=10000)
+        ani.save('rndm_walk.mp4',fps=60)
+
+if __name__ == "__main__":
+    main()
