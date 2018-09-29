@@ -10,4 +10,6 @@ profile_outputs
 *.out
 *.gif
 *.mp4
-glumpy`
+glumpy
+.DS_Store
+.scannerwork
