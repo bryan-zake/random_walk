@@ -6,6 +6,6 @@ A simple set of scripts for performing random walks in Python 3 with numpy and m
 python3 main.py -h
 
 ## Samples
-![Sample1](https://github.com/bryan-zake/random_walk/blob/master/sample.png)
-![Sample1](https://gitlab.com/bryanzake/random_walk/blob/master/sample.png)
+![](https://github.com/bryan-zake/random_walk/blob/master/sample.png)
+![](sample.png)
 
