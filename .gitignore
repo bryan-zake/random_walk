@@ -13,3 +13,5 @@ profile_outputs
 glumpy
 .DS_Store
 .scannerwork
+.project
+.pydevproject
