@@ -7,4 +7,5 @@ python3 main.py -h
 
 ## Samples
 ![](sample.png)
+![](sample2.png)
 
