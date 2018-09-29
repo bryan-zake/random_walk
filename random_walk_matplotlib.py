@@ -12,26 +12,26 @@ from random_args_parser import RandomArgsParser
 fig = plt.figure()
 
 def color(rwalk):
-    colorsMap = "jet"
+    colors_map = "jet"
     cs = [i for i in range(0, rwalk.array_size+1)]
-    cmx = plt.get_cmap(colorsMap)
-    cNorm = colors.Normalize(vmin=min(cs), vmax=max(cs))
-    scalarMap = cm.ScalarMappable(norm=cNorm, cmap=cmx)
-    return scalarMap, cs
+    cmx = plt.get_cmap(colors_map)
+    c_norm = colors.Normalize(vmin=min(cs), vmax=max(cs))
+    scalar_map = cm.ScalarMappable(norm=c_norm, cmap=cmx)
+    return scalar_map, cs
 
 def print_plot(rwalk):
     if rwalk.dim_size == 2:
         ax = fig.add_subplot(111)
         print("2D")
-        scalarMap, cs = color(rwalk)
-        ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], cmap=scalarMap.to_rgba(cs), marker='o', s=1)
-        scalarMap.set_array(cs)
+        scalar_map, cs = color(rwalk)
+        ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], cmap=scalar_map.to_rgba(cs), marker='o', s=1)
+        scalar_map.set_array(cs)
     elif rwalk.dim_size == 3:
         print("3D")
         ax = fig.add_subplot(111, projection="3d")
-        scalarMap, cs = color(rwalk)
-        ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], rwalk.dim_array[2], c=scalarMap.to_rgba(cs), marker='o', s=1)
-        scalarMap.set_array(cs)
+        scalar_map, cs = color(rwalk)
+        ax.scatter(rwalk.dim_array[0], rwalk.dim_array[1], rwalk.dim_array[2], c=scalar_map.to_rgba(cs), marker='o', s=1)
+        scalar_map.set_array(cs)
         ax.set_zlabel('Z label')
     ax.set_xlabel('X label')
     ax.set_ylabel('Y label')
