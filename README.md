@@ -7,4 +7,5 @@ python3 main.py -h
 
 ## Samples
 ![Sample1](https://github.com/bryan-zake/random_walk/blob/master/sample.png)
+![Sample1](https://gitlab.com/bryanzake/random_walk/blob/master/sample.png)
 
