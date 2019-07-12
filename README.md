@@ -1,7 +1,7 @@
 # RANDOM WALK
 
 A command line utility written in python for creating visualizations of \
-random walks in Python 3 with numpy and matplotlib (soon to support Vispy).
+random walks in Python 3 with numpy and matplotlib.
 
 ## Usage
 python3 main.py -h  
@@ -17,3 +17,4 @@ Usage:
 ![](sample.png)
 ![](sample2.png)
 
+This software is provided under the MIT License, see LICENSE for more details. 
