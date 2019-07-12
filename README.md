@@ -3,6 +3,8 @@
 A command line utility written in python for creating visualizations of \
 random walks in Python 3 with numpy and matplotlib.
 
+Please submit any pull requests if you add useful features or find any bugs!
+
 ## Usage
 python3 main.py -h  
 Usage:  
